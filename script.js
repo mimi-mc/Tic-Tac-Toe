@@ -19,23 +19,20 @@ squares.forEach(square => {
 });
 
 function handleClick(event) {
-   const square = event.target;
-   if (square.textContent === '' && !gameOver) {
-      square.textContent = currentPlayer;
-      square.removeEventListener('click', handleClick);
-   }
-   if (checkWin(currentPlayer)) {
-      handleGameOver();
-      output_message.textContent = `Game over: ${currentPlayer} wins!`;
-   } else if (checkTieGame()) {
-      handleGameOver();
-      output_message.textContent = `Game over: it's a tie!`
-   }
-   currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
-   if (currentPlayer === 'X' && !gameOver) {
-      output_message.textContent = `X's turn!`;
-   } else if (currentPlayer === 'O' && !gameOver) {
-      output_message.textContent = `O's turn!`;
+	const square = event.target;
+	if (square.textContent === '' && !gameOver) {
+		square.textContent = currentPlayer;
+		square.removeEventListener('click', handleClick);
+	}
+	if (checkWin(currentPlayer)) {
+		handleGameOver();
+		output_message.textContent = `Game over: ${currentPlayer} wins!`;
+	} else if (checkTieGame()) {
+		handleGameOver();
+		output_message.textContent = `Game over: it's a tie!`
+   } else {
+      currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+      output_message.textContent = `${currentPlayer}'s turn!`;
    }
 }
 
